@@ -1,4 +1,6 @@
 $(document).ready( function() {
+  
+  //event listner for toggling price text
   $('#plan').on('change', function (){
     var priceText
 
@@ -16,4 +18,16 @@ $(document).ready( function() {
 
     $('#price').text(priceText)
   })
+
+  $('#add').on('click', function() {
+    var plan = $('#plan')
+    var installment = plan.val()
+    var price = $('#price').text()
+    var inCart = $('#cart')
+    var numeric = price.replace(/[[A-Za-z$\/\s]/g, '')
+    var data = 'data-price"'+numeric + '" data-plan="' + installment + '"'
+
+    inCart.append('<li class="entry"' + data + '>' + installment + ' - ' + price + '</li>')
+  })
+
 })
